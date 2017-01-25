@@ -1,3 +1,5 @@
+import functools
+
 class mst(object):
     def __init__(self, G, V):
         self.G = G
@@ -22,7 +24,7 @@ class mst(object):
     def Kruskal(self):
         def comp(x, y):
             return x[2] - y[2]
-        g = sorted(self.G, comp)
+        g = sorted(self.G, key=functools.cmp_to_key(comp))
         arvore = []
         for e in g:
             r1, r2 = self.F(e[0]), self.F(e[1])
