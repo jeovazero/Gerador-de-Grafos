@@ -12,6 +12,7 @@
 #--------------------------------------------------------
 from random import randint
 from kruskal import mst
+import functools
 
 #--=--=--=-=-=--=-=-=--=-=-=-=-=-=-=--=-=-=-=-=-=-=-=-=-=-
 def p(J):
@@ -70,7 +71,7 @@ class geradorGrafos(object):
                 if k != 0: return k
             return 0
 
-        h = sorted(h, comp)
+        h = sorted(h, key=functools.cmp_to_key(comp))
         for i in range(0, len(h)-1):
             if h[i][0] == h[i+1][0] and h[i][1] == h[i+1][1]:
                 repetidos.append(h[i][3])
